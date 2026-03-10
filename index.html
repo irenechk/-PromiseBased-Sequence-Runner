@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>Promise Sequence Runner</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- MATRIX BACKGROUND -->
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+<h1>⚡ Async Task Pipeline</h1>
+
+<div class="buttons">
+<button id="runBtn">Run Tasks</button>
+<button id="resetBtn">Reset</button>
+</div>
+
+<!-- PIPELINE GRAPH -->
+
+<div class="pipeline">
+
+<div class="node" id="task1node">Task 1</div>
+<div class="line"></div>
+
+<div class="node" id="task2node">Task 2</div>
+<div class="line"></div>
+
+<div class="node" id="task3node">Task 3</div>
+
+</div>
+
+<!-- PROGRESS BAR -->
+
+<div class="progress-bar">
+<div id="progressFill"></div>
+</div>
+
+<!-- TASK STATUS -->
+
+<h3>Task Status</h3>
+
+<div class="task" id="task1">
+Task 1 : <span class="status pending">Pending</span>
+</div>
+
+<div class="task" id="task2">
+Task 2 : <span class="status pending">Pending</span>
+</div>
+
+<div class="task" id="task3">
+Task 3 : <span class="status pending">Pending</span>
+</div>
+
+<!-- TERMINAL -->
+
+<div id="progress"></div>
+
+<h3>Final Results</h3>
+<ul id="results"></ul>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+
+/* MATRIX BACKGROUND */
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+
+const letters="01";
+const matrix=letters.split("");
+
+const fontSize=30;
+const columns=canvas.width/fontSize;
+
+const drops=[];
+
+for(let x=0;x<columns;x++)
+drops[x]=1;
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00f2ff";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=matrix[Math.floor(Math.random()*matrix.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
+
+</script>
+
+</body>
+
+</html>

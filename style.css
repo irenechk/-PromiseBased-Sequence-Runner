@@ -1,0 +1,226 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Orbitron",sans-serif;
+}
+
+body{
+background:#020617;
+color:rgb(247, 234, 234);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+#matrix{
+position:fixed;
+top:0;
+left:0;
+z-index:0;
+}
+
+/* MAIN DASHBOARD */
+
+.container{
+position:relative;
+z-index:1;
+width:720px;
+padding:35px;
+border-radius:20px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+
+box-shadow:
+0 0 20px #00f2ff,
+0 0 60px #00f2ff33;
+}
+
+/* TITLE */
+
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#18e2ed;
+text-shadow:0 0 20px #00f2ff;
+}
+
+/* BUTTONS */
+
+button{
+
+padding:10px 20px;
+margin:5px;
+
+background:#00f2ff;
+border:none;
+border-radius:6px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+box-shadow:0 0 20px #00f2ff;
+
+}
+
+/* PIPELINE GRAPH */
+
+.pipeline{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin:20px 0;
+
+}
+
+.node{
+
+padding:8px 15px;
+
+border-radius:20px;
+
+background:#1f2937;
+
+border:2px solid #00f2ff;
+
+color:#00f2ff;
+
+}
+
+.line{
+
+width:50px;
+
+height:2px;
+
+background:#00f2ff;
+
+}
+
+/* PROGRESS BAR */
+
+.progress-bar{
+
+width:100%;
+
+height:12px;
+
+background:#111827;
+
+border-radius:10px;
+
+overflow:hidden;
+
+margin:15px 0;
+
+}
+
+#progressFill{
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg,#00f2ff,#7c3aed,#00f2ff);
+
+background-size:200%;
+
+animation:move 2s linear infinite;
+
+}
+
+@keyframes move{
+
+0%{background-position:0%}
+
+100%{background-position:200%}
+
+}
+
+/* TASK STATUS */
+
+.task{
+
+margin:6px 0;
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:14px;
+
+}
+
+.status{
+
+padding:3px 10px;
+
+border-radius:20px;
+
+font-size:11px;
+
+}
+
+.pending{background:#fe0044;}
+
+.running{
+background:#f59e0b;
+box-shadow:0 0 10px #f59e0b;
+}
+
+.completed{
+background:#10b981;
+box-shadow:0 0 10px #10b981;
+}
+
+/* TERMINAL LOG */
+
+#progress{
+
+margin-top:15px;
+
+min-height:120px;
+
+padding:10px;
+
+background:black;
+
+font-family:monospace;
+
+font-size:13px;
+
+color:#36ce68;
+
+border-radius:8px;
+
+overflow:auto;
+
+box-shadow:inset 0 0 10px #00ff9d;
+
+}
+
+/* RESULTS */
+
+#results li{
+
+color:#a305f8;
+
+margin:5px 0;
+
+}
